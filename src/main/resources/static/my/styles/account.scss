@@ -2,7 +2,7 @@
 @import "../../../static/assets/styles/global";
 
 .container {
-  @include flex(column, center, felx-start, 0);
+  @include flex(column, center, flex-start, 0);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

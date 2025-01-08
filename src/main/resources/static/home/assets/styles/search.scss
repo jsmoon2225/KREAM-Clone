@@ -13,7 +13,7 @@
   z-index: 2;
 }
 
-#header {
+#top {
   width: 100%;
 
   > .header-top {
@@ -153,7 +153,7 @@
   margin: 0 auto;
 
   > .container {
-    @include flex(column, strect, felx-start, 0.5rem);
+    @include flex(column, stretch, flex-start, 0.5rem);
     margin-top: 1rem;
 
     &.recent-area {
