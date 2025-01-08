@@ -323,6 +323,24 @@ public class UserService {
             }
             user.setPassword("");
             user.setVerified(true);
+
+            if (this.userMapper.selectUserByEmail(user.getEmail()) != null) {
+                return LoginResult.FAILURE_DUPLICATE_EMAIL; // 이메일 중복
+            }
+            if (this.userMapper.selectUserByContact(user.getContact()) != null) {
+                return LoginResult.FAILURE_DUPLICATE_CONTACT; // 연락처 중복
+            }
+            if (this.userMapper.selectUserByNickname(user.getNickname()) != null) {
+                return LoginResult.FAILURE_DUPLICATE_NICKNAME; // 닉네임 중복
+            }
+            user.setCreatedAt(LocalDateTime.now());
+
+            // 4. 사용자 정보 데이터베이스에 삽입
+            if (this.userMapper.insertUser(user) == 0) {
+                throw new TransactionalException();
+            }
+            return LoginResult.SOCIAL_SUCCESS;
+
         } else {
             if (!UserRegex.checkPassword(user.getPassword())) {
                 return CommonResult.FAILURE;
@@ -375,7 +393,7 @@ public class UserService {
 
             MimeMessage mimeMessage = this.mailSender.createMimeMessage(); // MimeMessage 객체 생성
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage); // 메시지 헬퍼 객체 생성
-            mimeMessageHelper.setFrom("yangsehun1943@gmail.com"); // 발신자 이메일 설정
+            mimeMessageHelper.setFrom("jsmoon2225@gmail.com"); // 발신자 이메일 설정
             mimeMessageHelper.setTo(emailToken.getUserEmail()); // 수신자 이메일 설정
             mimeMessageHelper.setSubject("[Kream] 회원가입 인증 링크"); // 이메일 제목 설정
             mimeMessageHelper.setText(mailText, true); // 이메일 본문 설정 (HTML 형식으로 처리)

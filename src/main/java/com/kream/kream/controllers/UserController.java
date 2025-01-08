@@ -53,8 +53,9 @@ public class UserController extends AbstractGeneralController {
     @RequestMapping(value = "/login", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public ModelAndView getIndex(@SessionAttribute(value = UserEntity.NAME_SINGULAR, required = false) UserEntity user) {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", user);
         if (user == null) { // 세션에 UserEntity 정보가 없을 경우
-            modelAndView.setViewName("/login"); // "user/index" 뷰를 설정
+            modelAndView.setViewName("login"); // "user/index" 뷰를 설정
             modelAndView.addObject("kakaoClientId", this.kakaoClientId); // 카카오 클라이언트 ID를 모델에 추가
             modelAndView.addObject("kakaoRedirectUri", this.kakaoRedirectUri); // 카카오 리다이렉트 URI를 모델에 추가
             modelAndView.addObject("naverClientId", this.naverClientId); // 네이버 클라이언트 ID를 모델에 추가
@@ -106,10 +107,10 @@ public class UserController extends AbstractGeneralController {
             modelAndView.addObject("socialTypeCode", result.getPayload().getSocialTypeCode());
             modelAndView.addObject("socialId", result.getPayload().getSocialId());
             modelAndView.addObject("isSocialRegister", true);
-            modelAndView.setViewName("/join");
+            modelAndView.setViewName("join");
         } else if (result.getResult() == CommonResult.SUCCESS) {
             session.setAttribute(UserEntity.NAME_SINGULAR, result.getPayload());
-            modelAndView.setViewName("redirect:/my");
+            modelAndView.setViewName("redirect:/my/");
         } else {
             modelAndView.setViewName("redirect:https://kauth.kakao.com/oauth/authorize?response_type");
         }
@@ -133,14 +134,14 @@ public class UserController extends AbstractGeneralController {
             modelAndView.addObject("socialTypeCode", result.getPayload().getSocialTypeCode()); // 소셜 타입 코드
             modelAndView.addObject("socialId", result.getPayload().getSocialId()); // 소셜 사용자 ID
             modelAndView.addObject("isSocialRegister", true); // 소셜 회원가입 플래그
-            modelAndView.setViewName("/join"); // 다시 "user/login" 뷰로 이동
+            modelAndView.setViewName("join"); // 다시 "user/login" 뷰로 이동
             System.out.println("이건 소셜 타입 코드 :" + result.getPayload().getSocialTypeCode());
             System.out.println("이건 소셜 아이디 :" + result.getPayload().getSocialId());
 
             // 처리 결과가 '성공'인 경우
         } else if (result.getResult() == CommonResult.SUCCESS) {
             session.setAttribute(UserEntity.NAME_SINGULAR, result.getPayload()); // 사용자 정보를 세션에 저장
-            modelAndView.setViewName("redirect:/my/profile"); // 사용자의 마이페이지로 리다이렉트
+            modelAndView.setViewName("redirect:/my/"); // 사용자의 마이페이지로 리다이렉트
 
             // 그 외 실패 처리
         } else {
@@ -156,7 +157,7 @@ public class UserController extends AbstractGeneralController {
     @ResponseBody
     public ModelAndView getJoin() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/join");
+        modelAndView.setViewName("join");
         return modelAndView;
     }
 
@@ -169,7 +170,7 @@ public class UserController extends AbstractGeneralController {
         return response.toString();
     }
 
-    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ModelAndView logout(HttpSession session) {
         session.setAttribute(UserEntity.NAME_SINGULAR, null);
         return new ModelAndView("redirect:/login");
@@ -180,7 +181,7 @@ public class UserController extends AbstractGeneralController {
         Result result = this.userService.validateEmailToken(emailToken);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject(Result.NAME, result.nameToLower());
-        modelAndView.setViewName("/user/validateEmailToken");
+        modelAndView.setViewName("user/validateEmailToken");
         return modelAndView;
     }
 
@@ -188,7 +189,7 @@ public class UserController extends AbstractGeneralController {
     @ResponseBody
     public ModelAndView getFindEmail() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/findEmail");
+        modelAndView.setViewName("findEmail");
         return modelAndView;
     }
 
@@ -208,7 +209,7 @@ public class UserController extends AbstractGeneralController {
     @ResponseBody
     public ModelAndView getFindpassword() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/findpassword");
+        modelAndView.setViewName("findpassword");
         return modelAndView;
     }
 

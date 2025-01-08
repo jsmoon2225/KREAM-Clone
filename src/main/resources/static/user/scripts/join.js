@@ -107,6 +107,10 @@ $form.onsubmit = (e) => {
                 Dialog.hide($dialog)
                 location.href = '/login';
             }],
+            social_success: ['회원가입', '소셜로그인으로 회원가입해 주셔서 감사합니다.', ($dialog) => {
+                Dialog.hide($dialog)
+                location.href = '/login';
+            }],
         }[response['result']] || ['오류', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.', ($dialog) => Dialog.hide($dialog)];
         Dialog.show({
             title: title,
