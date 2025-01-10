@@ -1,19 +1,8 @@
 @charset "UTF-8";
 .container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  justify-content: flex-start;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  padding: 0;
-}
-.container > .-spring {
-  flex-grow: 1;
-  flex-shrink: 1;
+  width: 100vw;
+  padding-top: 6rem;
+  flex: 1;
 }
 .container > .content {
   align-items: flex-start;
@@ -21,13 +10,10 @@
   flex-direction: row;
   gap: 0;
   justify-content: flex-start;
-  top: 6rem;
-  left: 0;
-  position: relative;
-  height: 1000px;
-  padding: 35px;
   box-sizing: border-box;
-  max-width: 1280px;
+  padding: 2rem 2rem 15rem;
+  max-width: 80rem;
+  margin: 0 auto;
   width: 100%;
 }
 .container > .content > .-spring {

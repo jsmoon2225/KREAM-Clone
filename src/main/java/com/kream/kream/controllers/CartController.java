@@ -25,22 +25,20 @@ public class CartController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getIndex(@SessionAttribute(value = UserEntity.NAME_SINGULAR) UserEntity user, Model model) {
-
-        CartDTO[] cart = this.cartService.selectCart(user.getId());
-        Integer count = this.cartService.counting(user.getId());
-
-        int cartindex = cart.length * 3000;
-
+    public ModelAndView getIndex(@SessionAttribute(value = UserEntity.NAME_SINGULAR) UserEntity user) {
         ModelAndView modelAndView = new ModelAndView();
         if (user == null) {
             modelAndView.setViewName("redirect:/login");
         } else {
+            CartDTO[] cart = this.cartService.selectCart(user.getId());
+            Integer count = this.cartService.counting(user.getId());
+
+            int cartindex = cart.length * 3000;
             modelAndView.setViewName("cart/index");
             modelAndView.addObject("cartIndex", cartindex);
             modelAndView.addObject("cart", cart);
             modelAndView.addObject("count", count);
-
+            modelAndView.addObject("user", user);
         }
         return modelAndView;
     }

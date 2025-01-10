@@ -144,10 +144,12 @@ public class MyService {
     public Result resolveRecoverPassword(UserEntity user, String newPassword) {
         if (user == null ||
                 user.getEmail() == null || user.getEmail().length() < 8 || user.getEmail().length() > 50 ||
-                newPassword == null || newPassword.length() < 8 || newPassword.length() > 50) {
+                newPassword == null) {
             return CommonResult.FAILURE;
         }
-
+        if (newPassword.length() < 8 || newPassword.length() > 50) {
+            return LoginResult.FAILURE_PASSWORD_INCORRECT;
+        }
 
         if (user.getSocialTypeCode() != null || user.getSocialId() != null) {
             return SocialResult.SOCIAL_PASSWORD_FAILURE;

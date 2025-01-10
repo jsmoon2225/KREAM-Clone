@@ -64,13 +64,15 @@
                                 <p class="desc email" th:text="${user.getEmail()}"></p>
                             </div>
                         </div>
-                        <div class="unit">
-                            <h5 class="title">비밀번호</h5>
-                            <div class="unit_content">
-                                <p class="desc password">●●●●●●●●●</p>
-                                <button class="button password" type="button">변경</button>
+                        <th:block th:if="${user.getSocialId() == null && user.getSocialTypeCode() == null}">
+                            <div class="unit">
+                                <h5 class="title">비밀번호</h5>
+                                <div class="unit_content">
+                                    <p class="desc password">●●●●●●●●●</p>
+                                    <button class="button password" type="button">변경</button>
+                                </div>
                             </div>
-                        </div>
+                        </th:block>
                         <form class="modify">
                             <input name="email" th:value="${user.getEmail()}" type="hidden">
                             <h5 class="title">비밀번호 변경</h5>
@@ -100,7 +102,7 @@
                         <div class="unit">
                             <h5 class="title">휴대폰 번호</h5>
                             <div class="unit_content">
-                                <p class="desc contact" th:text="${user.getContact()}"></p>
+                                <span class="desc contact" th:text="${user.getContact()}"></span>
                                 <button class="button" type="button">변경</button>
                             </div>
                         </div>

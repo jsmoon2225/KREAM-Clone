@@ -5,6 +5,10 @@ const $layerTitle = $layerButton.querySelector(':scope > .title');
 const $layers = document.querySelectorAll('.layer');
 const $buyMenu = document.querySelector('.container > .content > .snb_area > .snb > .snb_list > .snb_menu > .menu_item > .requestPage');
 
+window.onload = () => {
+    $buyMenu.click();
+}
+
 $buyMenu.onclick = () => {
     const tab1 = Array.from($tabLinks).find(link => link.getAttribute('rel') === 'content1');
     if (tab1) {
@@ -89,11 +93,11 @@ $tabLinks.forEach(link => {
                     const $emptyPage = new DOMParser().parseFromString(`
                 <div class="empty-page">
                                 <div class="text_body">
-                                    <span class="text">구매 입찰 내역이 없습니다.</span>
+                                    <span class="text">KREAM을 통해 상품을 구매해 보세요.</span>
                                 </div>
                                 <a class="button" href="/shop">
                                     <div class="button_text">
-                                        <div class="going-shop">SHOP 바로가기</div>
+                                        <div class="going-shop">구매하기</div>
                                     </div>
                                 </a>
                             </div>
@@ -210,11 +214,11 @@ $tabLinks.forEach(link => {
                     const $emptyPage = new DOMParser().parseFromString(`
                 <div class="empty-page">
                                 <div class="text_body">
-                                    <span class="text">거래 내역이 없습니다.</span>
+                                    <span class="text">KREAM을 통해 상품을 구매해 보세요.</span>
                                 </div>
                                 <a class="button" href="/shop">
                                     <div class="button_text">
-                                        <div class="going-shop">SHOP 바로가기</div>
+                                        <div class="going-shop">구매하기</div>
                                     </div>
                                 </a>
                             </div>
@@ -290,11 +294,11 @@ $tabLinks.forEach(link => {
                     const $emptyPage = new DOMParser().parseFromString(`
                 <div class="empty-page">
                                 <div class="text_body">
-                                    <span class="text">거래 내역이 없습니다.</span>
+                                    <span class="text">KREAM을 통해 상품을 구매해 보세요.</span>
                                 </div>
                                 <a class="button" href="/shop">
                                     <div class="button_text">
-                                        <div class="going-shop">SHOP 바로가기</div>
+                                        <div class="going-shop">구매하기</div>
                                     </div>
                                 </a>
                             </div>

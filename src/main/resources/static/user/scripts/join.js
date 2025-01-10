@@ -86,6 +86,7 @@ $form.onsubmit = (e) => {
         if (xhr.readyState !== XMLHttpRequest.DONE) {
             return;
         }
+        Loading.hide();
         if (xhr.status < 200 || xhr.status >= 300) {
             Dialog.show({
                 title: '회원가입',
@@ -100,6 +101,9 @@ $form.onsubmit = (e) => {
         const response = JSON.parse(xhr.responseText);
         const [title, content, onclick] = {
             failure: ['회원가입', '알 수 없는 이유로 회원가입에 실패하였습니다. 잠시 후 다시 시도해 주세요', ($dialog) => Dialog.hide($dialog)],
+            failure_password_incorrect: ['회원가입', '비밀번호를 규격에 맞게 입력해 주세요', ($dialog) => Dialog.hide($dialog)],
+            failure_email_incorrect: ['회원가입', '이메일을 규격에 맞게 입력해 주세요.', ($dialog) => Dialog.hide($dialog)],
+            failure_contact_incorrect: ['회원가입', '전화번호를 규격에 맞게 입력해 주세요.', ($dialog) => Dialog.hide($dialog)],
             failure_duplicate_email: ['회원가입', `입력하신 이메일${$form['email'].value}은 이미 사용중입니다. 다른 이메일을 사용해 주세요`, ($dialog) => Dialog.hide($dialog)],
             failure_duplicate_contact: ['회원가입', `입력하신 연락처${$form['contact'].value}은 이미 사용중입니다. 다른 연락처 사용해 주세요 `, ($dialog) => Dialog.hide($dialog)],
             failure_duplicate_nickname: ['회원가입', `입력하신 닉네임${$form['nickname'].value}은 이미 사용중입니다. 다른 닉네임 사용해 주세요`, ($dialog) => Dialog.hide($dialog)],
@@ -125,4 +129,5 @@ $form.onsubmit = (e) => {
     }
     xhr.open('POST', '/join');
     xhr.send(formData);
+    Loading.show();
 }

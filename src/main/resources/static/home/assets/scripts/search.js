@@ -1,4 +1,4 @@
-const $header = document.getElementById('header');
+const $header = document.getElementById('top');
 const $main = document.getElementById('main');
 const $cover = document.getElementById('cover');
 

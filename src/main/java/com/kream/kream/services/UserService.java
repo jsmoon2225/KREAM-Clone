@@ -310,8 +310,17 @@ public class UserService {
     public Result register(HttpServletRequest request, UserEntity user) throws MessagingException {
         if (user == null ||
                 !UserRegex.checkEmail(user.getEmail()) ||
-                !UserRegex.checkNickname(user.getNickname()) || user.getContact() == null) {
+                !UserRegex.checkNickname(user.getNickname()) || user.getContact() == null || user.getPassword() == null) {
             return CommonResult.FAILURE;
+        }
+        if (user.getEmail().length() < 8 || user.getEmail().length() > 50) {
+            return LoginResult.FAILURE_EMAIL_INCORRECT;
+        }
+        if (user.getPassword().length() < 8 || user.getPassword().length() > 50) {
+            return LoginResult.FAILURE_PASSWORD_INCORRECT;
+        }
+        if (user.getContact().length() == 11) {
+            return LoginResult.FAILURE_CONTACT_INCORRECT;
         }
         boolean isSocialRegister = user.getSocialTypeCode() != null && user.getSocialId() != null;
         if (isSocialRegister) {

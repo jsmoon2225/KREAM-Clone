@@ -201,9 +201,13 @@ public class MyController {
 
     @RequestMapping(value = "/modify-contact", method = RequestMethod.PATCH, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String patchContact(UserEntity user) {
+    public String patchContact(@SessionAttribute("user") UserEntity signedUser, UserEntity user) {
         Result result = this.myService.modifyContact(user);
+        if (result == CommonResult.SUCCESS) {
+            signedUser.setContact(user.getContact());
+        }
         JSONObject response = new JSONObject();
+        response.put("contact",user.getContact());
         response.put(Result.NAME, result.nameToLower());
         return response.toString();
     }

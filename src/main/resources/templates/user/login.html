@@ -65,20 +65,20 @@
                     찾기</a></li>
             </ul>
             <div class="social-login">
-                <button class="button-container">
+                <div class="button-container">
                     <a class="button -color-naver" target="_self"
                        th:href="@{https://nid.naver.com/oauth2.0/authorize (response_type='code', client_id = ${naverClientId}, redirect_uri = ${naverRedirectUri}, state = 'study')}">
                         <img alt="" class="image" th:src="@{/assets/images/loginForm.naver.png}">
                         <span class="text">네이버 로그인</span>
                     </a>
-                </button>
-                <button class="button-container">
+                </div>
+                <div class="button-container">
                     <a class="button -color-kakao" target="_self"
                        th:href="@{https://kauth.kakao.com/oauth/authorize (response_type='code', client_id = ${kakaoClientId}, redirect_uri = ${kakaoRedirectUri})}">
                         <img alt="" class="image" th:src="@{/assets/images/loginForm.kakao.png}">
                         <span class="text">카카오 로그인</span>
                     </a>
-                </button>
+                </div>
             </div>
         </form>
     </div>

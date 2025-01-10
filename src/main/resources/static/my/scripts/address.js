@@ -357,14 +357,6 @@ $AddressForm.onsubmit = (e) => {
             });
         }
         if (response['result'] === 'success') {
-            Dialog.show({
-                title: '주소록',
-                content: '새로운 주소를 등록합니다',
-                buttons: [{
-                    text: '확인',
-                    onclick: ($dialog) => Dialog.hide($dialog),
-                }]
-            });
             loadAddress();
             location.reload();
         }

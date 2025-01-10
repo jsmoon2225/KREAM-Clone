@@ -2,22 +2,16 @@
 @import "../../../static/assets/styles/global";
 
 .container {
-  @include flex(column, center, flex-start, 0);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  padding: 0;
+  width: 100vw;
+  padding-top: 6rem;
+  flex: 1;
 
   > .content {
     @include flex(row, flex-start, flex-start);
-    top: 6rem;
-    left: 0;
-    position: relative;
     box-sizing: border-box;
-    height: 754px;
-    padding: 35px;
-    max-width: 1280px;
+    padding: 2rem 2rem 17rem;
+    max-width: 80rem;
+    margin: 0 auto;
     width: 100%;
 
     > .snb_area {

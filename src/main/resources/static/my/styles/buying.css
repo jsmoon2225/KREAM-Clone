@@ -1,18 +1,7 @@
 .container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  justify-content: flex-start;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  padding: 0;
-}
-.container > .-spring {
-  flex-grow: 1;
-  flex-shrink: 1;
+  width: 100vw;
+  padding-top: 6rem;
+  flex: 1;
 }
 .container > .content {
   align-items: flex-start;
@@ -20,13 +9,10 @@
   flex-direction: row;
   gap: 0;
   justify-content: flex-start;
-  top: 6rem;
-  left: 0;
-  position: relative;
-  min-height: 754px;
   box-sizing: border-box;
-  padding: 35px;
-  max-width: 1280px;
+  padding: 2rem 2rem 17rem;
+  max-width: 80rem;
+  margin: 0 auto;
   width: 100%;
 }
 .container > .content > .-spring {
@@ -194,6 +180,7 @@
 .container > .content > .content_area > .my_Buying > .content_list > .bidding-header > .bidding > .purchase_list > .tab_item {
   flex-grow: 1;
   text-align: center;
+  margin-bottom: 1px;
 }
 .container > .content > .content_area > .my_Buying > .content_list > .bidding-header > .bidding > .purchase_list > .tab_item > .tab_link {
   align-items: center;
@@ -218,6 +205,18 @@
 }
 .container > .content > .content_area > .my_Buying > .content_list > .bidding-header > .bidding > .purchase_list > .tab_item > .tab_link.tab_on {
   border-bottom: 0.125rem solid #222222;
+}
+.container > .content > .content_area > .my_Buying > .content_list > .bidding-header > .bidding > .purchase_list > .tab_item > .tab_link.tab_on > .tab_box {
+  align-items: center;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.container > .content > .content_area > .my_Buying > .content_list > .bidding-header > .bidding > .purchase_list > .tab_item > .tab_link.tab_on > .tab_box > .-spring {
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 .container > .content > .content_area > .my_Buying > .content_list > .bidding-header > .bidding > .purchase_list > .tab_item > .tab_link.tab_on > .tab_box > .title {
   font-weight: bold;
@@ -429,6 +428,7 @@
   flex-direction: column;
   gap: 0.7rem;
   justify-content: center;
+  min-height: 192px;
   padding: 56px 28px;
 }
 .container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .empty-page > .-spring {
@@ -436,18 +436,28 @@
   flex-shrink: 1;
 }
 .container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .empty-page > .text_body > .text {
-  color: #222222;
+  color: rgba(34, 34, 34, 0.8);
+  font-size: 13px;
   text-align: center;
+  width: inherit;
 }
 .container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .empty-page > .button {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  justify-content: center;
   color: #ffffff;
   text-decoration: none;
   box-sizing: border-box;
   border-radius: 10px;
-  padding: 5px 8px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgb(34, 34, 34) 0 0 0 1px inset;
+  padding: 0.5rem 37px;
+  background-color: #ef6253;
   cursor: pointer;
+}
+.container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .empty-page > .button > .-spring {
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 .container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .empty-page > .button > .button_text {
   min-height: 20px;
@@ -461,9 +471,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: rgb(34, 34, 34);
   font-size: inherit;
-  font-weight: 700;
+  font-weight: 500;
 }
 .container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .product_list {
   width: 100%;
@@ -541,6 +550,17 @@
 .container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .product_list > .content > .label_item {
   color: #222222;
   font-size: 13px;
+}
+.container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .product_list > .content .delete_button {
+  width: 1.5rem;
+  text-align: center;
+}
+.container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .product_list > .content .delete_button:hover {
+  transform: scale(105%);
+}
+.container > .content > .content_area > .my_Buying > .my_order_box > .my_order_list > .product_list > .content .delete_button > .icon {
+  color: #4e4e4e;
+  padding: 0.3rem 0;
 }
 .container > .content > .content_area > .my_Buying > .my_order_box.-visible {
   display: block;

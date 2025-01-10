@@ -1,27 +1,22 @@
 @charset "UTF-8";
 @import "../../../static/assets/styles/global";
 
+
 .container {
-  @include flex(column, center, flex-start, 0);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  padding: 0;
+  width: 100vw;
+  padding-top: 6rem;
+  flex: 1;
 
   > .content {
-    @include flex(row, flex-start, flex-start,);
-    top: 6rem;
-    left: 0;
-    position: relative;
-    min-height: 754px;
+    @include flex(row, flex-start, flex-start);
     box-sizing: border-box;
-    padding: 35px;
-    max-width: 1280px;
+    padding: 2rem 2rem 17rem;
+    max-width: 80rem;
+    margin: 0 auto;
     width: 100%;
 
     > .snb_area {
-      @include flex(column, center, flex-start,);
+      @include flex(column, center, flex-start);
       margin-right: 20px;
       width: 180px;
       height: 100%;
@@ -188,6 +183,7 @@
                 > .tab_item {
                   flex-grow: 1;
                   text-align: center;
+                  margin-bottom: 1px;
 
                   > .tab_link {
                     @include flex(row, center, center);
@@ -206,6 +202,8 @@
                       border-bottom: 0.125rem solid #222222;
 
                       > .tab_box {
+                        @include flex(column-reverse, center, center);
+                        box-sizing: border-box;
 
                         > .title {
                           font-weight: bold;
@@ -427,24 +425,28 @@
 
             > .empty-page {
               @include flex(column, center, center, 0.7rem);
+              min-height: 192px;
               padding: 56px 28px;
 
               > .text_body {
 
                 > .text {
-                  color: #222222;
+                  color: #222222cc;
+                  font-size: 13px;
                   text-align: center;
+                  width: inherit;
                 }
               }
 
               > .button {
+                @include flex(column, center, center);
                 color: #ffffff;
                 text-decoration: none;
                 box-sizing: border-box;
                 border-radius: 10px;
-                padding: 5px 8px;
-                background-color: rgb(255, 255, 255);
-                box-shadow: rgb(34, 34, 34) 0 0 0 1px inset;
+                padding: 0.5rem 37px;
+                background-color: #ef6253;
+
                 cursor: pointer;
 
                 > .button_text {
@@ -459,9 +461,8 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
-                    color: rgb(34, 34, 34);
                     font-size: inherit;
-                    font-weight: 700;
+                    font-weight: 500;
 
 
                   }
@@ -533,8 +534,21 @@
                   color: #222222;
                   font-size: 13px;
                 }
-              }
 
+                .delete_button {
+                  width: 1.5rem;
+                  text-align: center;
+
+                  &:hover {
+                    transform: scale(105%);
+                  }
+
+                  > .icon {
+                    color: #4e4e4e;
+                    padding: 0.3rem 0;
+                  }
+                }
+              }
             }
           }
 

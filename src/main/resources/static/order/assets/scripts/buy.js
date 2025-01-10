@@ -539,9 +539,10 @@ function buyFormSubmit() {
                             Dialog.hide($dialog);
                         })
                     } else if (response['result'] === 'success') {
-                        Dialog.defaultOk('즉시 구매', '구매가 완료되었습니다. 진행상황은 구매내역에서 확인해 주세요.', ($dialog) => Dialog.hide($dialog));
-                        location.href = './';
-
+                        Dialog.defaultOk('즉시 구매', '구매가 완료되었습니다. 진행상황은 구매내역에서 확인해 주세요.', ($dialog) => {
+                            Dialog.hide($dialog);
+                            location.href = './';
+                        });
                     } else {
                         Dialog.defaultOk('오류', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.', ($dialog) => Dialog.hide($dialog));
                     }
