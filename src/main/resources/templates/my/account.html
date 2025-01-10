@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>KREAM</title>
+    <link rel="shortcut icon" th:href="@{'/assets/images/favicon.ico'}">
+    <link rel="stylesheet" th:href="@{'/my/styles/account.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/assets/styles/common.css'}" type="text/css">
+    <script defer th:src="@{'/assets/scripts/common.js'}" type="text/javascript"></script>
+    <script defer th:src="@{'/my/scripts/account.js'}" type="text/javascript"></script>
+</head>
+<body>
+<th:block th:replace="~{fragments/common.html :: header}"></th:block>
+<div class="container">
+    <div class="content">
+        <div class="snb_area">
+            <a class="nuxt-link-active" href="/my/">
+                <h2 class="title">마이 페이지</h2>
+            </a>
+            <nav class="snb">
+                <div class="snb_list">
+                    <strong class="snb_title">쇼핑정보</strong>
+                    <ul class="snb_menu">
+                        <li class="menu_item">
+                            <a class="menu_link" href="/my/buying">구매 내역</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="/my/selling">판매 내역</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="snb_list">
+                    <strong class="snb_title">내 정보</strong>
+                    <ul class="snb_menu">
+                        <li class="menu_item">
+                            <a class="menu_link" href="/my/profile">로그인 정보</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="/my/address">주소록</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link requestPage" href="/my/account">판매 정산 계좌</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="content_area">
+            <div class="my_profile">
+                <div class="content_title">
+                    <div class="title">
+                        <h3>판매 정산 계좌</h3>
+                    </div>
+                </div>
+                <div class="registered">
+                    <div class="box">
+                        <h4 class="box_title">등록된 계좌 정보</h4>
+                        <div class="box_account_info">
+                            <span class="account">농협은행123123213</span>
+                            <span class="account_devider">/</span>
+                            <span class="name">양세훈</span>
+                        </div>
+                    </div>
+                <button class="delete" type="button">삭제</button>
+                </div>
+                <form class="accountregistration">
+                    <input name="userId" th:value="${user.getId()}" type="hidden" id="userId">
+                    <div class="input_box">
+                        <h4 class="input_title">은행명</h4>
+                        <label class="--obj-label" data-id="bankName">
+                            <input autocomplete="off" class="input_txt" id="selectedBank" name="bankName" placeholder="선택하세요"
+                                   readonly type="text">
+                            <button class="btn" type="button">
+                                <img alt="down-circle" class="image" height="24"
+                                     src="/my/images/icons8-down-button-50.png" width="24">
+                            </button>
+                            <div class="layerDropdown">
+                                <div class="layer-background"></div>
+                                <div class="layer_container">
+                                    <div class="layer_content">
+                                        <ul class="drop_list">
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">국민은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">신한은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">우리은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">하나은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">기업은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">농협은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">SC은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">우체국</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">한국씨티은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">산업은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">카카오뱅크</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">부산은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">대구은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">광주은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">케이뱅크</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">수협중앙회</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">제주은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">전북은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">지역농축협</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">경남은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">새마을금고연합회</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">신협</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">저축은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">HSBC은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">도이치은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">제이피모간체이스은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">BOA은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">비엔피파리바은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">중국공상은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">산림조합</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">중국건설은행</a>
+                                            </li>
+                                            <li class="drop_item">
+                                                <a class="drop_link" href="#">토스뱅크</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="_warning"></span>
+                        </label>
+                    </div>
+                    <div class="input_box">
+                        <h4 class="input_title">계좌번호</h4>
+                        <label class="--obj-label" data-id="bankNumber">
+                            <input class="input_txt" name="accountNumber" placeholder="-없이 입력하세요" type="text">
+                            <span class="_warning"></span>
+                        </label>
+                    </div>
+                    <div class="input_box">
+                        <h4 class="input_title">예금주</h4>
+                        <label class="--obj-label" data-id="name">
+                            <input class="input_txt" name="accountOwner" placeholder="예금주명을 정확히 입력하세요" type="text">
+                            <span class="_warning"></span>
+                        </label>
+                    </div>
+                    <div class="registrationbtn">
+                        <button class="button" type="submit">저장하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="~{fragments/common.html :: footer}"></th:block>
+</body>
+</html>

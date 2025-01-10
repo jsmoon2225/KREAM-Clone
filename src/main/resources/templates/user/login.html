@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <meta name="_isSocialRegister" th:content="${isSocialRegister == null ? 'false' : isSocialRegister}">
+    <title>KREAM</title>
+    <link rel="shortcut icon" th:href="@{'/assets/images/favicon.ico'}">
+    <link rel="stylesheet" th:href="@{'/user/styles/login.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/assets/styles/common.css'}" type="text/css">
+    <script defer th:src="@{'/user/scripts/login.js'}" type="text/javascript"></script>
+    <script defer th:src="@{'/assets/scripts/common.js'}" type="text/javascript"></script>
+</head>
+<body>
+<th:block th:replace="~{fragments/common.html :: header}"></th:block>
+<div class="container">
+    <div class="content">
+        <form class="login-area" th:if="${isSocialRegister != true}">
+            <h2 class="login-title"></h2>
+            <label class="--obj-label" data-id="email">
+                <h3 class="_text">이메일 주소</h3>
+                <input class="item" name="email" placeholder="예) kream@kream.co.kr" type="email">
+                <button class="close -visible" type="button">
+                    <svg height="20" viewBox="0,0,256,256" width="20" x="0px" xmlns="http://www.w3.org/2000/svg"
+                         y="0px">
+                        <g fill="#6a6464" fill-opacity="0.18039" fill-rule="nonzero" font-family="none" font-size="none"
+                           font-weight="none" stroke="none" stroke-dasharray="" stroke-dashoffset="0"
+                           stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="1"
+                           style="mix-blend-mode: normal" text-anchor="none">
+                            <g transform="scale(8.53333,8.53333)">
+                                <path d="M15,3c-6.627,0 -12,5.373 -12,12c0,6.627 5.373,12 12,12c6.627,0 12,-5.373 12,-12c0,-6.627 -5.373,-12 -12,-12zM16.414,15c0,0 3.139,3.139 3.293,3.293c0.391,0.391 0.391,1.024 0,1.414c-0.391,0.391 -1.024,0.391 -1.414,0c-0.154,-0.153 -3.293,-3.293 -3.293,-3.293c0,0 -3.139,3.139 -3.293,3.293c-0.391,0.391 -1.024,0.391 -1.414,0c-0.391,-0.391 -0.391,-1.024 0,-1.414c0.153,-0.154 3.293,-3.293 3.293,-3.293c0,0 -3.139,-3.139 -3.293,-3.293c-0.391,-0.391 -0.391,-1.024 0,-1.414c0.391,-0.391 1.024,-0.391 1.414,0c0.154,0.153 3.293,3.293 3.293,3.293c0,0 3.139,-3.139 3.293,-3.293c0.391,-0.391 1.024,-0.391 1.414,0c0.391,0.391 0.391,1.024 0,1.414c-0.153,0.154 -3.293,3.293 -3.293,3.293z"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+                <span class="_warning">올바른 이메일을 입력해 주세요</span>
+            </label>
+            <label class="--obj-label" data-id="password">
+                <h3 class="_text">비밀번호</h3>
+                <input autocomplete="off" class="item" maxlength="16" name="password" type="password">
+                <button class="close -visible" type="button">
+                    <svg height="20" viewBox="0,0,256,256" width="20" x="0px" xmlns="http://www.w3.org/2000/svg"
+                         y="0px">
+                        <g fill="#6a6464" fill-opacity="0.18039" fill-rule="nonzero" font-family="none" font-size="none"
+                           font-weight="none" stroke="none" stroke-dasharray="" stroke-dashoffset="0"
+                           stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="1"
+                           style="mix-blend-mode: normal" text-anchor="none">
+                            <g transform="scale(8.53333,8.53333)">
+                                <path d="M15,3c-6.627,0 -12,5.373 -12,12c0,6.627 5.373,12 12,12c6.627,0 12,-5.373 12,-12c0,-6.627 -5.373,-12 -12,-12zM16.414,15c0,0 3.139,3.139 3.293,3.293c0.391,0.391 0.391,1.024 0,1.414c-0.391,0.391 -1.024,0.391 -1.414,0c-0.154,-0.153 -3.293,-3.293 -3.293,-3.293c0,0 -3.139,3.139 -3.293,3.293c-0.391,0.391 -1.024,0.391 -1.414,0c-0.391,-0.391 -0.391,-1.024 0,-1.414c0.153,-0.154 3.293,-3.293 3.293,-3.293c0,0 -3.139,-3.139 -3.293,-3.293c-0.391,-0.391 -0.391,-1.024 0,-1.414c0.391,-0.391 1.024,-0.391 1.414,0c0.154,0.153 3.293,3.293 3.293,3.293c0,0 3.139,-3.139 3.293,-3.293c0.391,-0.391 1.024,-0.391 1.414,0c0.391,0.391 0.391,1.024 0,1.414c-0.153,0.154 -3.293,3.293 -3.293,3.293z"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+                <span class="_warning">올바른 비밀번호를 입력해 주세요</span>
+            </label>
+            <div class="login-button">
+                <button class="button" type="submit">로그인</button>
+            </div>
+            <ul class="look-box">
+                <li class="look-list"><a class="look-link" rel="register" th:href="@{'/join'}">이메일 가입</a></li>
+                <li class="look-list"><a class="look-link" rel="recover-email" th:href="@{'/findEmail'}">이메일 찾기</a></li>
+                <li class="look-list"><a class="look-link" rel="recover-password" th:href="@{'/findpassword'}">비밀번호
+                    찾기</a></li>
+            </ul>
+            <div class="social-login">
+                <div class="button-container">
+                    <a class="button -color-naver" target="_self"
+                       th:href="@{https://nid.naver.com/oauth2.0/authorize (response_type='code', client_id = ${naverClientId}, redirect_uri = ${naverRedirectUri}, state = 'study')}">
+                        <img alt="" class="image" th:src="@{/assets/images/loginForm.naver.png}">
+                        <span class="text">네이버 로그인</span>
+                    </a>
+                </div>
+                <div class="button-container">
+                    <a class="button -color-kakao" target="_self"
+                       th:href="@{https://kauth.kakao.com/oauth/authorize (response_type='code', client_id = ${kakaoClientId}, redirect_uri = ${kakaoRedirectUri})}">
+                        <img alt="" class="image" th:src="@{/assets/images/loginForm.kakao.png}">
+                        <span class="text">카카오 로그인</span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<th:block th:replace="~{fragments/common.html :: footer}"></th:block>
+</body>
+</html>

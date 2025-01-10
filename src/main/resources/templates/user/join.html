@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_isSocialRegister" th:content="${isSocialRegister == null ? 'false' : isSocialRegister}">
+    <title>KREAM</title>
+    <link rel="shortcut icon" th:href="@{'/assets/images/favicon.ico'}">
+    <link rel="stylesheet" th:href="@{'/user/styles/join.css'}" type="text/css">
+    <link rel="stylesheet" th:href="@{'/assets/styles/common.css'}" type="text/css">
+    <script defer th:src="@{'/user/scripts/join.js'}" type="text/javascript"></script>
+    <script defer th:src="@{'/assets/scripts/common.js'}" type="text/javascript"></script>
+    <script th:if="${isSocialRegister == true}">
+        alert('소셜 계정으로 회원가입을 진행합니다. 아래 항목을 입력해 주세요.');
+    </script>
+</head>
+<body>
+<th:block th:replace="~{fragments/common.html :: header}"></th:block>
+<div class="container">
+    <div class="content">
+        <form class="register-form" th:classappend="${isSocialRegister == true} ? '-visible'">
+            <h2 class="title" th:text="${isSocialRegister == true ? '소셜 계정 가입' : '회원가입'}"></h2>
+            <input hidden name="socialTypeCode" type="hidden" th:if="${isSocialRegister == true}" th:value="${socialTypeCode}">
+            <input hidden name="socialId" type="hidden" th:if="${isSocialRegister == true}" th:value="${socialId}">
+            <label class="--obj-label" data-id="email">
+                <h3 class="_text">이메일 주소*</h3>
+                <div class="input-item">
+                    <input autocomplete="off" class="item" placeholder="예) kream@kream.co.kr" type="email" name="email">
+                </div>
+                <span class="_warning">올바른 이메일을 입력해 주세요</span>
+            </label>
+            <label class="--obj-label" data-id="password" th:if="${isSocialRegister != true}">
+                <h3 class="_text">비밀번호*</h3>
+                <div class="input-item">
+                    <input autocomplete="off" class="item" placeholder="영문,숫자,특수문자 조합 8-16자" type="password" name="password">
+                </div>
+                <span class="_warning">올바른 비밀번호를 입력해 주세요</span>
+            </label>
+            <label class="--obj-label" th:if="${isSocialRegister != true}">
+                <h3>비밀번호 재입력*</h3>
+                <div class="input-item">
+                    <input autocomplete="off" class="item" placeholder="비밀번호를 재입력 해주세요" type="password" name="passwordCheck">
+                </div>
+            </label>
+            <label class="--obj-label" data-id="nickname">
+                <h3 class="_text">닉네임</h3>
+                <div class="input-item">
+                    <input autocomplete="off" class="item" type="text" name="nickname">
+                </div>
+                <span class="_warning">올바른 닉네임을 입력해 주세요</span>
+            </label>
+            <label class="--obj-label" data-id="contact">
+                <h3 class="_text">전화번호</h3>
+                <div class="input-item">
+                    <input maxlength="11" minlength="11" autocomplete="off" class="item" placeholder="'-'없이 입력" type="text" name="contact">
+                </div>
+                <span class="_warning">올바른 연락처를 입력해 주세요</span>
+            </label>
+
+            <div class="join-terms">
+                <div class="join-terms item">
+                    <input id="all" type="checkbox" name="agree">
+                    <label class="--obj-label" for="all">
+                        <img alt="uncheck" class="square" height="24" src="/assets/images/icons8-square-32.png"
+                             width="24"/>
+                        <img alt="check" class="check" height="24" src="/assets/images/icons8-check-50.png" width="24"/>
+                    </label>
+                    <div class="text">
+                        <div class="title">모두 동의합니다.</div>
+                        <span>선택 동의 항목 포함</span>
+                    </div>
+                </div>
+                <div class="join-terms item">
+                    <input class="agree" id="agree-a" type="checkbox">
+                    <label class="--obj-label" for="agree-a">
+                        <img class="square" height="24" src="/assets/images/icons8-uncheck48.png" width="24"/>
+                        <img class="check" height="24" src="/assets/images/icons8-check-48.png" width="24"/>
+                    </label>
+                    <div class="text">
+                        <div>[필수]만 14세 이상입니다.</div>
+                    </div>
+                </div>
+                <div class="join-terms item">
+                    <input class="agree" id="agree-c" type="checkbox">
+                    <label class="--obj-label" for="agree-c">
+                        <img class="square" height="24" src="/assets/images/icons8-uncheck48.png" width="24"/>
+                        <img class="check" height="24" src="/assets/images/icons8-check-48.png" width="24"/>
+                    </label>
+                    <div class="text">
+                        <div>[필수]이용약관 동의.</div>
+                    </div>
+                </div>
+                <div class="join-terms item">
+                    <input class="agree" id="agree-d" type="checkbox">
+                    <label class="--obj-label" for="agree-d">
+                        <img class="square" height="24" src="/assets/images/icons8-uncheck48.png" width="24"/>
+                        <img class="check" height="24" src="/assets/images/icons8-check-48.png" width="24"/>
+                    </label>
+                    <div class="text">
+                        <div>[필수]개인 정보 수집 및 이용 동의.</div>
+                    </div>
+                </div>
+                <div class="join-terms item">
+                    <input class="agree" id="agree-e" type="checkbox">
+                    <label class="--obj-label" for="agree-e">
+                        <img class="square" height="24" src="/assets/images/icons8-uncheck48.png" width="24"/>
+                        <img class="check" height="24" src="/assets/images/icons8-check-48.png" width="24"/>
+                    </label>
+                    <div class="text">
+                        <div>[필수]개인 정보 수집 및 이용 동의.</div>
+                    </div>
+                </div>
+
+            </div>
+            <span class="-spring"></span>
+            <div class="button-container">
+                <button class="button" data-id="button" type="submit" th:text="${isSocialRegister == true ? '소셜 계정 가입' : '본인 인증하고 가입하기'}"></button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<th:block th:replace="~{fragments/common.html :: footer}"></th:block>
+
+</body>
+</html>
